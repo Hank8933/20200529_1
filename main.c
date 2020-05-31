@@ -3,7 +3,7 @@
 #include <math.h>
 
 typedef struct POINT{
-    int x, y;
+    double x, y;
 }poi;
 
 typedef struct TRIANGLE{
@@ -21,14 +21,14 @@ void poiToTri(int n, poi p[], tri t[])
 
 int main()
 {
-    freopen("list", "r", stdin);
+    //freopen("list", "r", stdin);
     int n;
     scanf("%d", &n);
     poi pois[n];
     tri tris[n-2];
     double area = 0;
     for(int i = 0; i < n; i++){
-        scanf("%d %d", &pois[i].x, &pois[i].y);
+        scanf("%lf %lf", &pois[i].x, &pois[i].y);
     }
 
     poiToTri(n, pois, tris);
@@ -40,7 +40,7 @@ int main()
     }
 */
     for(int i = 0; i < n-2; i++){
-        area += fabs((double)(tris[i].a.x * (tris[i].b.y - tris[i].c.y)\
+        area += fabs((tris[i].a.x * (tris[i].b.y - tris[i].c.y)\
                             + tris[i].b.x * (tris[i].c.y - tris[i].a.y)\
                             + tris[i].c.x * (tris[i].a.y - tris[i].b.y)) / 2);
     }
